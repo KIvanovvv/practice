@@ -47,42 +47,75 @@ const restaurant = {
       `Here is your delicius pasta with ${ing1},${ing2} and ${ing3}.`
     );
   },
+  orderPizza: function (mainIngredient, ...otherIngredient) {
+    console.log(mainIngredient);
+    console.log(otherIngredient);
+  },
 };
-const arr = [7, 8, 9];
-const newArr = [1, 2, ...arr];
-console.log(newArr);
 
-console.log(...newArr);
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(others);
 
-const newMenu = [...restaurant.mainMenu, `Gnocci`];
-console.log(newMenu);
-//Copy array
-const mainMenuCopy = [...restaurant.mainMenu];
-//Join 2 arrays
-const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
-console.log(menu);
-
-const str = `Jonas`;
-const letters = [...str, ` `, `S.`];
-console.log(letters);
-//Real-world example
-const ingredients = [
-  //   prompt(`Let\'s make pasta !
-  // Ingridient 1?`),
-  //   prompt(`Ingredient 2?`),
-  //   prompt(`Ingredient 3 ?`),
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
 ];
-console.log(ingredients);
-
-restaurant.orderPasta(...ingredients);
+console.log(pizza, risotto, otherFood);
 //Objects
-const newRestaurant = { foundedIn: 1996, ...restaurant, founder: `Guiseppe` };
-console.log(newRestaurant);
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+//Functions
+const add = function (...numbers) {
+  let sum = 0;
+  // for (let el of numbers) {
+  //   sum += el;
+  // }
+  console.log(numbers.reduce((a, b) => a + b));
+};
+add(2, 3);
+add(5, 3, 7, 2);
+add(3, 5, 8, 5, 3, 4);
 
-const restaurantCopy = { ...restaurant };
-restaurantCopy.name = `Ristorante Roma`;
-console.log(restaurantCopy.name);
-console.log(restaurant.name);
+const x = [23, 5, 7];
+add(...x);
+restaurant.orderPizza(`mushrooms`, `onion`, `spinach`);
+restaurant.orderPizza(`mushrooms`);
+
+// const arr = [7, 8, 9];
+// const newArr = [1, 2, ...arr];
+// console.log(newArr);
+
+// console.log(...newArr);
+
+// const newMenu = [...restaurant.mainMenu, `Gnocci`];
+// console.log(newMenu);
+// //Copy array
+// const mainMenuCopy = [...restaurant.mainMenu];
+// //Join 2 arrays
+// const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+// console.log(menu);
+
+// const str = `Jonas`;
+// const letters = [...str, ` `, `S.`];
+// console.log(letters);
+// //Real-world example
+// const ingredients = [
+//   //   prompt(`Let\'s make pasta !
+//   // Ingridient 1?`),
+//   //   prompt(`Ingredient 2?`),
+//   //   prompt(`Ingredient 3 ?`),
+// ];
+// console.log(ingredients);
+
+// restaurant.orderPasta(...ingredients);
+// //Objects
+// const newRestaurant = { foundedIn: 1996, ...restaurant, founder: `Guiseppe` };
+// console.log(newRestaurant);
+
+// const restaurantCopy = { ...restaurant };
+// restaurantCopy.name = `Ristorante Roma`;
+// console.log(restaurantCopy.name);
+// console.log(restaurant.name);
 // restaurant.orderDelivery({
 //   time: `22:30`,
 //   address: `Via del Sole 21`,
