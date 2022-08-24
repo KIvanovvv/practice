@@ -49,41 +49,82 @@ const restaurant = {
     console.log(otherIngredient);
   },
 };
-const ordersSet = new Set([
-  `Pasta`,
-  `Pizza`,
-  `Pizza`,
-  `Risotto`,
-  `Pasta`,
-  `Pizza`,
+
+// 1. Create an array 'events' of the different game events that happened (no duplicates)
+// 2. After the game has finished, is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+// 3. Print the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes)
+// 4. Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this:
+//       [FIRST HALF] 17: ⚽️ GOAL
+
+// GOOD LUCK 😀
+//
+
+const gameEvents = new Map([
+  [17, '⚽️ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽️ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽️ GOAL'],
+  [80, '⚽️ GOAL'],
+  [92, '🔶 Yellow card'],
 ]);
-const question = new Map([
-  [`question`, `What is the best programming language in the world?`],
-  [1, `C`],
-  [2, `Java`],
-  [3, `JavaScript`],
-  [`correct`, 3],
-  [true, `Correct`],
-  [false, `Try again`],
-]);
-console.log(question);
-const hours = new Map(Object.entries(openingHours));
-console.log(hours);
-//Quiz app
-console.log(question.get(`question`));
-for (const [key, value] of question) {
-  if (typeof key === `number`) {
-    console.log(`Answer ${key} : ${value}`);
-  }
+//1
+const events = [...new Set(gameEvents.values())];
+console.log(events);
+//2
+gameEvents.delete(64);
+console.log(gameEvents);
+//3
+console.log(
+  `An event happend, on avrage, every ${90 / gameEvents.size} minutes`
+);
+//4
+for (const [minutes, event] of gameEvents) {
+  const half = minutes <= 45 ? `FIRST ` : `SECOND`;
+  console.log(`[${half} HALF] ${minutes}: ${event}`);
 }
-//const answer = Number(prompt(`Your answer`));
-const answer = 3;
-console.log(question.get(answer === question.get(`correct`)));
-//Convert map to array
-console.log([...question]);
-//console.log([...question.entries()]);
-console.log([...question.keys()]);
-console.log([...question.values()]);
+
+/////////////////////////////////
+//Map practice
+// const ordersSet = new Set([
+//   `Pasta`,
+//   `Pizza`,
+//   `Pizza`,
+//   `Risotto`,
+//   `Pasta`,
+//   `Pizza`,
+// ]);
+// const question = new Map([
+//   [`question`, `What is the best programming language in the world?`],
+//   [1, `C`],
+//   [2, `Java`],
+//   [3, `JavaScript`],
+//   [`correct`, 3],
+//   [true, `Correct`],
+//   [false, `Try again`],
+// ]);
+// console.log(question);
+// const hours = new Map(Object.entries(openingHours));
+// console.log(hours);
+// //Quiz app
+// console.log(question.get(`question`));
+// for (const [key, value] of question) {
+//   if (typeof key === `number`) {
+//     console.log(`Answer ${key} : ${value}`);
+//   }
+// }
+// //const answer = Number(prompt(`Your answer`));
+// const answer = 3;
+// console.log(question.get(answer === question.get(`correct`)));
+// //Convert map to array
+// console.log([...question]);
+// //console.log([...question.entries()]);
+// console.log([...question.keys()]);
+// console.log([...question.values()]);
 ///////////////////////////////////
 //Maps Fundamentals
 // const rest = new Map();
