@@ -57,33 +57,61 @@ const ordersSet = new Set([
   `Pasta`,
   `Pizza`,
 ]);
+const question = new Map([
+  [`question`, `What is the best programming language in the world?`],
+  [1, `C`],
+  [2, `Java`],
+  [3, `JavaScript`],
+  [`correct`, 3],
+  [true, `Correct`],
+  [false, `Try again`],
+]);
+console.log(question);
+const hours = new Map(Object.entries(openingHours));
+console.log(hours);
+//Quiz app
+console.log(question.get(`question`));
+for (const [key, value] of question) {
+  if (typeof key === `number`) {
+    console.log(`Answer ${key} : ${value}`);
+  }
+}
+//const answer = Number(prompt(`Your answer`));
+const answer = 3;
+console.log(question.get(answer === question.get(`correct`)));
+//Convert map to array
+console.log([...question]);
+//console.log([...question.entries()]);
+console.log([...question.keys()]);
+console.log([...question.values()]);
+///////////////////////////////////
+//Maps Fundamentals
+// const rest = new Map();
+// rest.set(`name`, `Classico Ialiano`);
+// rest.set(1, `Firenze,Italy`);
+// rest.set(2, `Lisbon,Portugal`);
+// //console.log(rest);
+// rest
+//   .set(`categories`, ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+//   .set(`open`, 11)
+//   .set(`close`, 23)
+//   .set(true, `We are open`)
+//   .set(false, `We are close`);
 
-const rest = new Map();
-rest.set(`name`, `Classico Ialiano`);
-rest.set(1, `Firenze,Italy`);
-rest.set(2, `Lisbon,Portugal`);
-//console.log(rest);
-rest
-  .set(`categories`, ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
-  .set(`open`, 11)
-  .set(`close`, 23)
-  .set(true, `We are open`)
-  .set(false, `We are close`);
+// // console.log(rest.get(`name`));
+// // console.log(rest.get(true));
 
-// console.log(rest.get(`name`));
-// console.log(rest.get(true));
+// const time = 21;
+// //.log(rest.get(time > rest.get(`open`) && time < rest.get(`close`)));
 
-const time = 21;
-//.log(rest.get(time > rest.get(`open`) && time < rest.get(`close`)));
-
-//console.log(rest.has(`categories`));
-rest.delete(2);
-//rest.clear();
-const arr = [1, 2];
-rest.set(arr, `test`);
-rest.set(document.querySelector(`h1`), `heading`);
-console.log(rest);
-console.log(rest.get(arr));
+// //console.log(rest.has(`categories`));
+// rest.delete(2);
+// //rest.clear();
+// const arr = [1, 2];
+// rest.set(arr, `test`);
+// rest.set(document.querySelector(`h1`), `heading`);
+// console.log(rest);
+// console.log(rest.get(arr));
 
 ////////////////////////////////
 //Sets
