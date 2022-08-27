@@ -15,7 +15,7 @@ for (const flight of flights) {
   )} ${formatAirport(from)} to ${formatAirport(to)} (${time.replace(
     `:`,
     `h`
-  )})`.padStart(50);
+  )})`.padStart(40);
   console.log(output);
 }
 //console.log(flights);
